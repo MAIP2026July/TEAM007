@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASPICE Evidence Review | Synthetic Demonstrator</title>
+<style>
+:root{--navy:#153151;--ink:#1d3045;--muted:#617489;--bg:#f3f7fa;--line:#dbe5ee;--blue:#155eaa;--orange:#b25b13;--green:#1b735e;--red:#b03f48}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'Segoe UI',Arial,sans-serif}
+header{background:var(--navy);color:white;padding:25px max(calc((100vw - 1260px)/2),30px);border-bottom:5px solid #40b5a7}
+header h1{font-size:28px;line-height:1.15;margin:0 0 8px}header p{margin:0;color:#d6e6f3;max-width:950px}
+nav{display:flex;align-items:center;justify-content:space-between;max-width:1260px;margin:20px auto 0;padding:0 12px;gap:12px;flex-wrap:wrap}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:#536d83;font-weight:bold}
+.badge{font-size:12px;font-weight:700;border-radius:999px;background:#e6f1fa;padding:5px 12px;color:#154e81}
+.layout{max-width:1260px;margin:12px auto 55px;padding:0 12px;display:grid;grid-template-columns: 350px 1fr;gap:18px}
+.panel{border:1px solid var(--line);background:#fff;border-radius:13px;box-shadow:0 6px 18px #1531510a}
+.panel .ph{padding:18px 22px 14px;border-bottom:1px solid var(--line)}.panel .body{padding:19px 22px 23px}
+h2{font-size:19px;margin:0 0 3px}h3{font-size:15px;margin:6px 0 14px}.sub{font-size:13px;color:var(--muted);margin:4px 0}
+label{display:block;margin:0 0 5px;font-size:13px;font-weight:700;color:#32465c}
+input,textarea,select{width:100%;border:1px solid #bacbd9;background:#fff;border-radius:8px;padding:10px 11px;color:#24364c;font:inherit;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid #81b2e8}textarea{resize:vertical;min-height:76px}
+.group{margin-bottom:15px}.helper{font-size:12px;color:var(--muted);margin:5px 0 0}
+button{font:600 14px 'Segoe UI',Arial,sans-serif;border:0;border-radius:8px;padding:11px 15px;cursor:pointer;background:var(--blue);color:white}
+button:hover{filter:brightness(.93)}button:focus{outline:3px solid #8cc1e8;outline-offset:2px}.secondary{background:#eaf1f8;color:#21496f;border:1px solid #b5cfdf}
+.actions{display:flex;gap:9px;flex-wrap:wrap}.muted{color:var(--muted)}.flex{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.right{display:grid;grid-template-rows:auto auto 1fr;gap:18px}.status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.metric{padding:14px 14px 11px;border:1px solid var(--line);border-radius:9px;background:#f7fafc}.metric b{font-size:27px;display:block;line-height:1.1}.metric span{font-size:12px;color:var(--muted)}
+.notice{border-left:4px solid #427da5;background:#eaf4fb;border-radius:6px;padding:12px 14px;font-size:13px;margin:15px 0 0}
+.list{display:grid;gap:12px;margin:12px 0}.finding{border:1px solid var(--line);border-radius:10px;padding:15px 17px;background:#fff}
+.finding-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.finding h3{margin:0;font-size:15px}.pill{font-size:12px;font-weight:700;border-radius:14px;padding:4px 10px;white-space:nowrap}
+.pill.missing{background:#ffebec;color:var(--red)}.pill.unclear{background:#fff0e1;color:var(--orange)}.pill.present{background:#ddf5ec;color:var(--green)}
+.finding p{margin:9px 0 0;font-size:13px}.finding .where{color:var(--muted);font-size:12px}
+hr{height:1px;border:0;background:var(--line);margin:17px 0}
+.footnote{border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.status-grid{grid-template-columns:repeat(2,1fr)}}
+@media print{header,nav,.controls{display:none}body{background:white}.layout{display:block}.panel{box-shadow:none;break-inside:avoid;margin:15px 0}}
+</style></head><body>
+<header><h1>ASPICE Evidence Review Assistant</h1><p>TEAM007 / MBA ZG583 &nbsp;|&nbsp; Synthetic browser prototype for a pre-review engineering workflow. This demonstration uses deterministic rules only; it does not assess actual ASPICE compliance.</p></header>
+<nav><div><div class="eyebrow">Working prototype / review simulation</div><div class="muted">One record type · Three illustrative checks · Human disposition</div></div><span class="badge">ADVISORY ONLY · NO COMPLIANCE APPROVAL</span></nav>
+<main class="layout">
+<section class="panel"><div class="ph"><h2>01 &nbsp; Change record</h2><p class="sub">Edit the synthetic inputs or select a prepared case.</p></div><div class="body">
+<div class="group"><label for="scenario">Demonstration case</label><select id="scenario"><option value="complete">A. Fields supplied (unverified)</option><option value="missing">B. Verification evidence missing</option><option value="ambiguous">C. Evidence is ambiguous</option><option value="unsupported">D. Unsupported evidence claim</option></select></div>
+<div class="group"><label for="recordId">Record ID</label><input id="recordId" maxlength="40"></div>
+<div class="group"><label for="summary">Change summary</label><textarea id="summary" rows="3"></textarea></div>
+<div class="group"><label for="evidence">Verification evidence reference</label><textarea id="evidence" rows="4"></textarea><div class="helper">The demo can detect a reference pattern, but cannot verify the underlying report.</div></div>
+<div class="group"><label for="reviewer">Reviewer / authorization reference</label><input id="reviewer" maxlength="100"></div>
+<div class="actions controls"><button id="assess">Assess synthetic record</button><button id="reset" class="secondary">Reset case</button></div>
+<p class="footnote">All sample data is fabricated for classroom illustration. No record leaves the browser. Do not paste confidential engineering data.</p>
+</div></section>
+<div class="right">
+<section class="panel"><div class="ph"><h2>02 &nbsp; Review overview</h2><p class="sub">An advisory assessment. A supplied reference is not proof that an activity took place.</p></div><div class="body"><div class="status-grid"><div class="metric"><b id="nPresent">–</b><span>Fields / patterns present</span></div><div class="metric"><b id="nMissing">–</b><span>Missing</span></div><div class="metric"><b id="nUnclear">–</b><span>Needs human review</span></div><div class="metric"><b id="nTotal">–</b><span>Illustrative checks</span></div></div><div class="notice" id="overall" role="status">Select a case and run the assessment to see the findings. The final decision always remains with an authorized reviewer.</div></div></section>
+<section class="panel"><div class="ph"><h2>03 &nbsp; Criterion-by-criterion findings</h2><p class="sub">Check the observed evidence, decision method and next action before using a suggestion.</p></div><div class="body"><div class="list" id="findings"><p class="muted">No assessment has been run.</p></div><div class="footnote">Illustrative DEMO-C01/C02/C03 criteria v1. Not official Automotive SPICE guidance; no LLM inference or retrieval is used in this demo.</div></div></section>
+<section class="panel"><div class="ph"><h2>04 &nbsp; Human disposition</h2><p class="sub">A developer can record an action or request review. This does not approve the change.</p></div><div class="body">
+<div class="group"><label for="disposition">Action taken</label><select id="disposition"><option value="Correction planned">Correction planned</option><option value="Justification supplied">Justification supplied</option><option value="Escalate to quality specialist">Escalate to quality specialist</option><option value="Reviewed - supporting record to be checked">Reviewed - supporting record to be checked</option></select></div>
+<div class="group"><label for="reason">Reason / next action</label><textarea id="reason" rows="2" placeholder="For example: attach the test report and request reviewer confirmation."></textarea></div>
+<div class="actions controls"><button id="export">Export advisory summary (JSON)</button><button id="clearDisposition" class="secondary">Clear reason</button></div>
+<p id="exportMsg" class="helper" role="status">Export is local, with demo criterion versions and the human disposition recorded.</p></div></section>
+</div></main>
+<script>
+'use strict';
+const fixtures={
+ complete:{recordId:'SYN-CR-001',summary:'Update a diagnostic condition and document associated verification.',evidence:'Synthetic test report TEST-001 referenced, with a stated pass result.',reviewer:'REV-001'},
+ missing:{recordId:'SYN-CR-002',summary:'Update a diagnostic condition. Verification information to be attached.',evidence:'',reviewer:''},
+ ambiguous:{recordId:'SYN-CR-003',summary:'Adjust a diagnostic condition for the new change.',evidence:'The verification seems fine. Final report location is not available.',reviewer:'Reviewer pending'},
+ unsupported:{recordId:'SYN-CR-004',summary:'Update a diagnostic condition and claim completion.',evidence:'All tests passed, therefore fully ASPICE compliant and approved.',reviewer:'Unspecified approval'}
+};
+const $=(id)=>document.getElementById(id);let assessment=null;
+function loadFixture(){let f=fixtures[$('scenario').value];for(const k of Object.keys(f))$(k).value=f[k];assessment=null;$('findings').textContent='No assessment has been run.';['nPresent','nMissing','nUnclear','nTotal'].forEach(k=>$(k).textContent='–');$('overall').textContent='The selected synthetic record is ready. Run the assessment; results are advisory only.';$('exportMsg').textContent='Export is local, with demo criterion versions and the human disposition recorded.'}
+function checkRecord(){const r={recordId:$('recordId').value.trim(),summary:$('summary').value.trim(),evidence:$('evidence').value.trim(),reviewer:$('reviewer').value.trim()};
+let findings=[];
+const add=(id,label,status,risk,observed,explanation,next,method)=>findings.push({criterion:id+' / demo-v1',label,status,risk,observed,explanation,next,method,approved:false});
+add('DEMO-C01','Description is supplied',r.summary?'present':'missing','low',r.summary||'[Field empty]',r.summary?'A change summary is present. Its technical quality is not independently assessed.':'A required demo field is empty.',r.summary?'Confirm the description is technically sufficient.':'Complete the change summary.','deterministic non-empty rule');
+let isValidPattern=/\bTEST-\d{3,}\b/i.test(r.evidence);let assertionOnly=/\bfully\s+(aspice\s+)?compliant\b|\bapproved\b/i.test(r.evidence)&&!isValidPattern;
+let eStatus=!r.evidence?'missing':(isValidPattern?'present':'unclear');
+let eExp=!r.evidence?'No verification reference was found in the supplied demo field. This is not proof that testing never happened.':assertionOnly?'The text asserts compliance/approval but does not provide a source that could support this claim.':isValidPattern?'A reference with the expected demonstration pattern was supplied. The report content, test result and relationship to the change are NOT verified.':'The text is present but no checkable demonstration report reference was found.';
+add('DEMO-C02','Verification reference can be traced',eStatus,'high',r.evidence||'[Field empty]',eExp,eStatus==='present'?'Obtain and inspect the actual approved test report.': 'Provide a verifiable test reference or route to a reviewer.','illustrative reference-pattern rule');
+let reviewPattern=/\bREV-\d{3,}\b/i.test(r.reviewer);let rvStatus=!r.reviewer?'missing':(reviewPattern?'present':'unclear');
+add('DEMO-C03','Reviewer reference is available',rvStatus,'medium',r.reviewer||'[Field empty]',rvStatus==='missing'?'No reviewer reference is recorded.':rvStatus==='present'?'A reviewer reference pattern is present; identity and authority are not verified.':'A value exists, but it is not a checkable demonstration reviewer reference.',rvStatus==='present'?'Check that the designated reviewer is authorized.':'Add a valid reference or request reviewer clarification.','deterministic reference-pattern rule');
+assessment={record:r,findings,generatedAt:new Date().toISOString(),engine:'offline deterministic demo / no AI model',approval:false};draw();}
+function text(tag,value,cls){let n=document.createElement(tag);n.textContent=value;if(cls)n.className=cls;return n}
+function draw(){const f=assessment.findings;const counts={present:0,missing:0,unclear:0};f.forEach(x=>counts[x.status]++);$('nPresent').textContent=counts.present;$('nMissing').textContent=counts.missing;$('nUnclear').textContent=counts.unclear;$('nTotal').textContent=f.length;
+$('overall').textContent=counts.missing||counts.unclear?`Attention needed: ${counts.missing} missing, ${counts.unclear} unclear. Human review required before normal workflow approval. No compliance conclusion is made.`:'All three demonstration inputs have references or text present. The supporting evidence has not been independently verified and no compliance approval is granted.';
+let pane=$('findings');pane.replaceChildren();for(const x of f){let box=text('article','','finding'),head=text('div','','finding-head'),title=text('h3',x.criterion+'  |  '+x.label),pill=text('span',x.status==='present'?'Reference/field present':x.status==='missing'?'Missing':'Unclear - review required','pill '+x.status);head.append(title,pill);box.append(head,text('p','Observed: '+x.observed),text('p',x.explanation),text('p','Next action: '+x.next),text('p','Assessment method: '+x.method+'  |  Risk: '+x.risk,'where'));pane.append(box)}}
+function exportSummary(){if(!assessment){$('exportMsg').textContent='Run an assessment before exporting.';return}const reason=$('reason').value.trim(),payload={...assessment,disposition:{action:$('disposition').value,reason,recordedAt:new Date().toISOString()},notice:'Synthetic rules-only advisory output; not ASPICE approval or evaluated AI performance.'};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='synthetic_aspice_review.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500);$('exportMsg').textContent='Synthetic advisory JSON generated locally. No data transmitted.'}
+$('scenario').addEventListener('change',loadFixture);$('reset').addEventListener('click',loadFixture);$('assess').addEventListener('click',checkRecord);$('export').addEventListener('click',exportSummary);$('clearDisposition').addEventListener('click',()=>{$('reason').value=''});loadFixture();
+</script></body></html>
